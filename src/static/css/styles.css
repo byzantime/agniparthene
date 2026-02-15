@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    /* Ensure proper rendering of polytonic Greek */
+    html {
+        font-feature-settings: "kern" 1, "liga" 1;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ensure Greek text uses proper serif font */
+    :lang(el), [lang="el"] {
+        font-family: "Noto Serif", Georgia, serif;
+    }
+}
+
+@layer components {
+    /* Verse pair hover effect */
+    .verse-pair {
+        @apply transition-colors duration-200;
+    }
+
+    .verse-pair:hover {
+        @apply bg-parchment-200/50 dark:bg-liturgical-dark/50;
+    }
+
+    /* Refrain styling */
+    .verse-pair.refrain {
+        @apply bg-parchment-200/30 dark:bg-liturgical-rose/5;
+    }
+
+    .verse-pair.refrain:hover {
+        @apply bg-parchment-200/70 dark:bg-liturgical-rose/10;
+    }
+}
+
+/* Print styles for chanters */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+
+    /* Hide interactive elements */
+    #theme-toggle,
+    header button {
+        display: none !important;
+    }
+
+    /* Reset dark mode colors for print */
+    .dark {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Ensure proper page breaks */
+    .verse-pair {
+        page-break-inside: avoid;
+    }
+
+    .verse-pair.refrain {
+        background: none !important;
+        border-left: 3px solid #8b1538;
+        padding-left: 1rem;
+    }
+
+    /* Compact spacing for print */
+    .verse-pair {
+        padding: 0.25rem 0;
+    }
+
+    /* Make links visible as text */
+    a {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+
+    /* Footer simplification */
+    footer {
+        border-top: 1px solid #ccc;
+        margin-top: 2rem;
+        padding-top: 1rem;
+    }
+
+    /* Grid layout for print */
+    .grid-cols-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    /* Tune dividers for print */
+    .tune-divider {
+        border-top: 1px solid #ccc;
+        page-break-after: avoid;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+    }
+
+    .tune-label {
+        color: #8b1538 !important;
+        font-weight: 600;
+    }
+
+}

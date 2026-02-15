@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info
+
+# Build artifacts
+build/
+node_modules/
+
+# Netlify
+.netlify/
+
+# IDE
+*.sublime-project
+*.sublime-workspace

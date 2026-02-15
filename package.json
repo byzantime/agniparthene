@@ -1,0 +1,12 @@
+{
+  "name": "agniparthene",
+  "version": "1.0.0",
+  "description": "Agni Parthene hymn website",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./src/static/css/styles.css -o ./build/static/css/styles.css --minify",
+    "watch:css": "npx tailwindcss -i ./src/static/css/styles.css -o ./build/static/css/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

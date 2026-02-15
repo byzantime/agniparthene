@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="hymn">
+    <!-- Hymn Title -->
+    <header class="text-center mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-liturgical-crimson dark:text-liturgical-rose mb-3">
+            Ἁγνὴ Παρθένε
+        </h1>
+        <p class="text-xl sm:text-2xl text-gray-700 dark:text-parchment-200 mb-4">
+            O Virgin Pure
+        </p>
+        <p class="text-sm text-gray-500 dark:text-parchment-300/60 italic">
+            A hymn to the Theotokos by St. Nectarios of Aegina
+        </p>
+    </header>
+
+    <!-- Hymn Verses -->
+    <div class="space-y-1">
+        {% for verse in hymn_verses %}
+        {% if verse.tune_start %}
+        <!-- Tune change indicator -->
+        <div class="tune-divider flex items-center gap-4 py-3 mt-4 mb-2">
+            <div class="flex-grow h-px bg-parchment-300 dark:bg-liturgical-rose/20"></div>
+            <span class="tune-label px-3 py-1 text-xs font-medium tracking-wider
+                         text-liturgical-crimson/80 dark:text-liturgical-rose/80">
+                {{ verse.tune }}
+            </span>
+            <div class="flex-grow h-px bg-parchment-300 dark:bg-liturgical-rose/20"></div>
+        </div>
+        {% endif %}
+        <div class="verse-pair grid grid-cols-2 gap-2 sm:gap-4 md:gap-8 py-3 {% if verse.refrain %}refrain{% endif %}">
+            <!-- Greek Text -->
+            <div class="verse-greek text-right">
+                <p class="leading-relaxed {% if verse.refrain %}text-sm sm:text-lg italic text-liturgical-crimson dark:text-liturgical-rose{% else %}text-lg sm:text-xl text-gray-800 dark:text-parchment-100{% endif %}">
+                    {{ verse.greek }}
+                </p>
+            </div>
+
+            <!-- English Text -->
+            <div class="verse-english text-left">
+                <p class="leading-relaxed {% if verse.refrain %}text-sm sm:text-lg italic text-liturgical-crimson dark:text-liturgical-rose{% else %}text-lg sm:text-xl text-gray-700 dark:text-parchment-200{% endif %}">
+                    {{ verse.english }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</article>
+{% endblock %}
