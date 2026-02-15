@@ -16,7 +16,7 @@ requires-dist = [{ name = "hardboiled", git = "https://github.com/byzantime/hard
 [[package]]
 name = "hardboiled"
 version = "0.1.0"
-source = { git = "https://github.com/byzantime/hardboiled.git#d0a5105737e23edfe5934da1803c331c981375b6" }
+source = { git = "https://github.com/byzantime/hardboiled.git#33aa96663a3568d42245934ac89bd3479cf9e74c" }
 dependencies = [
     { name = "jinja2" },
     { name = "python-dotenv" },
